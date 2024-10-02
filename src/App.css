@@ -1,38 +1,56 @@
+body {
+  overflow: hidden;
+  margin: 0;
+}
+
+
+body:before {
+  content: '';
+  background: #474543 url('https://0.s3.envato.com/files/94012504/05_preview5.jpg') no-repeat center center;
+  background-size: cover; /* Ensures the image covers the entire background */
+  position: absolute;
+
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+}
+
+canvas {
+  opacity: 0;
+  transition: 1s opacity cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+canvas.ready {
+  opacity: 0.5;
+}
+
 .App {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro {
+  position: absolute;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
   text-align: center;
+  color: #fafafa;
+  z-index: 10;
+  width: 100%;
+  max-width: 700px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.intro h1 {
+  font-size: 150px;
+  font-family: 'Amatic SC', cursive;
 }
+.Name{
+  font-size: 50px;
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

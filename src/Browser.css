@@ -1,0 +1,324 @@
+/* Typing animation */
+@keyframes typing {
+  from {
+    width: 0;
+    visibility: visible; /* Text becomes visible when typing starts */
+  }
+  to {
+    width: 100%;
+    visibility: visible;
+  }
+}
+
+/* Caret blinking animation */
+
+/* General styles for lines of text */
+.line {
+  overflow: hidden;
+  white-space: nowrap;
+  visibility: hidden; /* Initially hidden */
+  animation: typing 1s steps(40, end) forwards, 0.75s step-end infinite;
+  animation-fill-mode: forwards; /* Keeps final state after animation */
+}
+
+/* Stops the blinking caret once the animation ends */
+.line::after {
+  content: '';
+  animation: none;
+}
+
+/* Applying specific delays for multi-line typing */
+.line.one {
+  animation-delay: 0s;
+}
+
+.line.two {
+  animation-delay: 1s;
+}
+
+.line.three {
+  animation-delay: 2s;
+}
+.line.four {
+  animation-delay: 1s ;
+}
+.line.five {
+  animation-delay: 2s ;
+}
+.line.six {
+  animation-delay: 3s ;
+}
+.line.seven {
+  animation-delay: 4s ;
+}
+.line.eight {
+  animation-delay: 5s ;
+}
+.line.nine {
+  animation-delay: 6s ;
+}
+
+/* Text style */
+.textI {
+  padding-left: 3% ;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column; /* Ensures text appears in multiple lines */
+  padding-right: 5%;
+}
+.textE {
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #fafafa;
+  display: flex;
+  flex-direction: column; /* Ensures text appears in multiple lines */
+}
+/* Basic body styling */
+body {
+  background-color: #1d1f21;
+  margin: 0;
+  overflow: hidden;
+}
+
+.education {
+  position: absolute;
+  display: flex;
+  background-color: #333;
+  padding-bottom: 2%;
+  padding-top:0.5%;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.5);
+  margin-top: 20px;
+  cursor: grab;
+  transition: transform 0.5s ease-out;
+  animation-delay: 3s; /* Adjust this delay to match the .Intro animation duration */
+  width: 30%; /* Allow the width to adapt to the content */
+  height: auto; /* Allow the height to adapt to the content */
+  max-width: 100%; /* Ensure it doesn't overflow the parent container */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Browsr window styling */
+/* Wrapper around the browser */
+.browser-wrapper {
+  position: relative; /* Allows absolutely positioned background elements to be placed around the browser */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevents overflow of elements */
+  z-index : '20';
+}
+
+/* The browser itself */
+.browser {
+  z-index : '20';
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  margin: 50px auto;
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #1d1f21;
+  overflow: hidden;
+  border: 2px solid transparent;
+  animation: subtleNeonGlow 3s infinite alternate;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.4), 0 0 30px rgba(135, 206, 250, 0.3);
+}
+
+/* Background elements */
+.background-element {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 105, 180, 0.4);
+  border-radius: 50%;
+  position: absolute; /* Allows for positioning outside of the browser */
+  z-index: -5; /* Make sure these are below the browser but still visible */
+}
+
+.background-element.small {
+  width: 5px;
+  height: 5px;
+}
+
+.background-element.large {
+  width: 20px;
+  height: 20px;
+}
+
+/* Optional floating animation */
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.background-element {
+  animation: float 5s ease-in-out infinite; /* Floating effect for added dynamic appearance */
+}
+
+/* Subtle neon border animation */
+@keyframes subtleNeonGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 105, 180, 0.4), 0 0 30px rgba(135, 206, 250, 0.3);
+    border: 2px solid rgba(255, 105, 180, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(135, 206, 250, 0.3), 0 0 40px rgba(173, 216, 230, 0.3);
+    border: 2px solid rgba(135, 206, 250, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(255, 105, 180, 0.4), 0 0 30px rgba(135, 206, 250, 0.4);
+    border: 2px solid rgba(255, 105, 180, 0.5);
+  }
+}
+
+/* Styling for other parts (header, controls, etc.) remains the same */
+
+/* Browser header styling */
+.browser-header {
+  font-family: 'Orbitron', sans-serif; /* Updated font */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.5);
+}
+
+/* Control buttons (close, minimize, maximize) */
+.controls {
+  display: flex;
+}
+
+.control {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 105, 180, 0.5);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.control:hover {
+  transform: scale(1.1);
+  background-color: rgba(135, 206, 250, 0.2);
+  color: #fff;
+}
+
+/* Other styles for tabs, address bar, content */
+.tabs {
+  color: #fff;
+}
+
+.address-bar input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  background-color: #444;
+  color: #fff;
+}
+
+.browser-content {
+  color: #fafafa;
+  padding-inline: 20px;
+  padding: 20px;
+}
+
+.tab {
+  padding: 10px 15px;
+  margin-right: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.tab:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.active {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.address-bar {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.Name {
+  margin-left: 12%;
+  font-size: 30px;
+  font-family: 'Orbitron', sans-serif; /* Updated font */
+  font-weight: bold;
+  color: rgba(255, 105, 180, 0.5);
+}
+
+.Intro {
+  position: absolute;
+  width:62%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.5);
+  margin-left: 32%;
+  margin-top: 5%;
+  cursor: grab; /* Change the cursor to indicate it's draggable */
+  transition: transform 0.5s ease-out; /* Smooth movement */
+}
+
+.Intro.dragging {
+  cursor: grabbing; /* Cursor changes when dragging */
+}
+
+
+.Intro .title{
+  border-right: 1px solid rgba(255, 105, 180, 0.5); ;
+}
+
+.education .title {
+  padding-bottom: 4%;
+}
+
+.title {
+  text-align: center;
+  font-family: 'Orbitron', sans-serif; /* Updated font */
+  margin-left: 1%;
+  padding-left: 2%;
+  color: rgba(255, 105, 180, 0.5);
+  padding-right: 3%;
+  white-space: nowrap; /* Ensures the title will only be one line */
+}
+
