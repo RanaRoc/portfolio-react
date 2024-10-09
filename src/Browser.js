@@ -1,12 +1,44 @@
 import React, { useRef, useState, useEffect } from 'react';
 import './Browser.css';
 
+const translations = {
+  en: {
+    title: "Who Am I?",
+    intro1: "I am a 21-year-old student in my last year of my engineering degree in computer science.",
+    intro2: "I am currently looking for an internship outside of France. I am very passionate about",
+    intro3: "web development, but I also have a lot of experience in mobile and software development.",
+    educationTitle: "My Education",
+    education1: "I obtained my two-year associate degree in 2022 in computer science.",
+    education2: "I then decided to obtain my engineering degree in the same specialty at Polytech Grenoble.",
+    cvTitle: "My CV",
+    viewCv: "View CV",
+    home: "Home",
+    about: "About",
+    contact: "Contact"
+  },
+  fr: {
+    title: "Qui suis-je ?",
+    intro1: "Je suis un étudiant de 21 ans en dernière année de mon diplôme d'ingénieur en informatique.",
+    intro2: "Je recherche actuellement un stage à l'extérieur de la France. Je suis très passionné par",
+    intro3: "le développement web, mais j'ai aussi beaucoup d'expérience en développement mobile et logiciel.",
+    educationTitle: "Mon Parcours Scolaire",
+    education1: "J'ai obtenu mon diplôme de deux ans en 2022 en informatique.",
+    education2: "J'ai ensuite décidé d'obtenir mon diplôme d'ingénieur dans la même spécialité à Polytech Grenoble.",
+    cvTitle: "Mon CV",
+    viewCv: "Voir le CV",
+    home: "Accueil",
+    about: "À propos",
+    contact: "Contact"
+  }
+};
+
 const Browser = () => {
   const introRef = useRef(null);
   const educationRef = useRef(null);
   const [isDragging, setIsDragging] = useState({ intro: false, education: false });
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [currentElement, setCurrentElement] = useState(null);
+  const [language, setLanguage] = useState('en'); // Default language is English
 
   // Handle mouse down (when dragging starts)
   const handleMouseDown = (e, element) => {
@@ -34,8 +66,8 @@ const Browser = () => {
       if (isDragging[currentElement]) {
         // Calculate new coordinates
         const rect = elementRef.getBoundingClientRect();
-        const newX = (e.clientX - offset.x - rect.left)*2;
-        const newY = (e.clientY - offset.y - rect.top)*2;
+        const newX = (e.clientX - offset.x - rect.left) * 2;
+        const newY = (e.clientY - offset.y - rect.top) * 2;
         // Set new position
         elementRef.style.transform = `translate(${newX}px, ${newY}px)`;
       }
@@ -102,6 +134,11 @@ const Browser = () => {
     };
   }, []);
 
+  // Function to handle language change
+  const handleLanguageChange = (lang) => {
+    setLanguage(lang);
+  };
+
   return (
     <div className="browser-wrapper">
       <div
@@ -118,9 +155,13 @@ const Browser = () => {
           </div>
           <span className="Name">Rana Rochdi</span>
           <div className="tabs">
-            <span className="tab active">Home</span>
-            <span className="tab">About</span>
-            <span className="tab">Contact</span>
+            <span className="tab active">{translations[language].home}</span>
+            <span className="tab">{translations[language].about}</span>
+            <span className="tab">{translations[language].contact}</span>
+          </div>
+          <div className="language-selector">
+            <button className={`language-button ${language === 'en' ? 'active' : ''}`} onClick={() => handleLanguageChange('en')}>EN</button>
+            <button className={`language-button ${language === 'fr' ? 'active' : ''}`} onClick={() => handleLanguageChange('fr')}>FR</button>
           </div>
         </div>
 
@@ -131,11 +172,11 @@ const Browser = () => {
             onMouseDown={(e) => handleMouseDown(e, 'intro')}
             style={{ userSelect: 'none', position: 'absolute' }}
           >
-            <h2 className="title">Who Am I ?</h2>
+            <h2 className="title">{translations[language].title}</h2>
             <span className="textI">
-              <span className="line one">I am a 21-year-old student in my last year of my engineering degree in computer science. <br/></span>
-              <span className="line two">I am currently looking for an internship outside of France. I am very passionate about <br/></span>
-              <span className="line three"> web development, but I also have a lot of experience in mobile and software development.</span>
+              <span className="line one">{translations[language].intro1} <br/></span>
+              <span className="line two">{translations[language].intro2} <br/></span>
+              <span className="line three">{translations[language].intro3}</span>
             </span>
           </div>
 
@@ -146,10 +187,17 @@ const Browser = () => {
             style={{ userSelect: 'none', position: 'absolute' }}
           >
             <span className="textE">
-              <span className="line four">I obtained my two-year   associate degree in 2022  in computer science  </span> <span className="line seven"> I then decided to obtain my  engineering degree in the same specialty at Polytech Grenoble. </span>
+              <span className="line four">{translations[language].education1}</span> <span className="line seven">{translations[language].education2}</span>
             </span>
-            <h2 className="title">My Education</h2>
+            <h2 className="title">{translations[language].educationTitle}</h2>
 
+          </div>
+          
+          <div className="cv-section">
+            <h2 className="title">{translations[language].cvTitle}</h2>
+            <a href="/CV-web-en-2024.pdf" className="cv-button" target="_blank" rel="noopener noreferrer">
+              <button className="neon-button">{translations[language].viewCv}</button>
+            </a>
           </div>
         </div>
       </div>

@@ -69,13 +69,17 @@
   padding-right: 5%;
 }
 .textE {
-  text-align: center;
+  padding-top:2.5%;
+  padding-right: 5%;
+  text-align: right;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
   color: #fafafa;
   display: flex;
   flex-direction: column; /* Ensures text appears in multiple lines */
 }
+
+
 /* Basic body styling */
 body {
   background-color: #1d1f21;
@@ -87,16 +91,17 @@ body {
   position: absolute;
   display: flex;
   background-color: #333;
-  padding-bottom: 2%;
-  padding-top:0.5%;
   border-radius: 10px;
+padding-left:1%;
+margin-top: 9%;
   border-bottom: 1px solid rgba(255, 105, 180, 0.5);
-  margin-top: 20px;
+  margin-bottom: 20%;
+  margin-left: 25%;
   cursor: grab;
-  transition: transform 0.5s ease-out;
+  transition: transform 1s ease-out;
   animation-delay: 3s; /* Adjust this delay to match the .Intro animation duration */
-  width: 30%; /* Allow the width to adapt to the content */
-  height: auto; /* Allow the height to adapt to the content */
+  width: 70%; /* Allow the width to adapt to the content */
+  height: 13%; /* Allow the height to adapt to the content */
   max-width: 100%; /* Ensure it doesn't overflow the parent container */
   box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
@@ -226,6 +231,7 @@ body {
 
 /* Other styles for tabs, address bar, content */
 .tabs {
+  margin-left:5%;
   color: #fff;
 }
 
@@ -276,7 +282,8 @@ body {
 }
 
 .Name {
-  margin-left: 12%;
+  
+  margin-left: 32%;
   font-size: 30px;
   font-family: 'Orbitron', sans-serif; /* Updated font */
   font-weight: bold;
@@ -285,18 +292,18 @@ body {
 
 .Intro {
   position: absolute;
-  width:62%;
-  display: flex;
+  width: 69%;
+    display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #333;
   padding: 10px;
   border-radius: 10px;
   border-bottom: 1px solid rgba(255, 105, 180, 0.5);
-  margin-left: 32%;
-  margin-top: 5%;
+  margin-left: 25%;
+  margin-top: 2%;
   cursor: grab; /* Change the cursor to indicate it's draggable */
-  transition: transform 0.5s ease-out; /* Smooth movement */
+  transition: transform 1s ease-out;
 }
 
 .Intro.dragging {
@@ -305,20 +312,121 @@ body {
 
 
 .Intro .title{
+  text-align: center;
   border-right: 1px solid rgba(255, 105, 180, 0.5); ;
 }
 
-.education .title {
-  padding-bottom: 4%;
+.education .title{
+  padding-top:0.7%;
+  padding-left : 3%;
+  border-left: 1px solid rgba(255, 105, 180, 0.5);
+  text-align: left;
+  padding-bottom : 3%;
 }
 
+.cv-section .title{
+  padding-top:10%;
+}
 .title {
-  text-align: center;
   font-family: 'Orbitron', sans-serif; /* Updated font */
   margin-left: 1%;
   padding-left: 2%;
   color: rgba(255, 105, 180, 0.5);
   padding-right: 3%;
-  white-space: nowrap; /* Ensures the title will only be one line */
+}
+
+
+.cv-section {
+  margin-left: 4%;
+  
+  background: linear-gradient(135deg, #333, #444);
+  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 105, 180, 0.5);
+  width: 17%; /* Increased width for better visibility */
+  height: 25vh; /* Increased height */
+  text-align: center;
+  margin-top: 1%;
+  padding: 20px; /* Add padding for better spacing */
+  box-shadow: 0 0 15px rgba(255, 105, 180, 0.5), 0 0 50px rgba(135, 206, 250, 0.3); /* Soft glow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions for hover effects */
+}
+
+.cv-section:hover {
+  transform: translateY(-5px); /* Slight hover effect */
+  box-shadow: 0 0 25px rgba(255, 105, 180, 0.7), 0 0 60px rgba(135, 206, 250, 0.5); /* Stronger glow on hover */
+}
+
+.cv-section .title {
+  padding-top:1vh;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(255, 105, 180, 0.7);
+  margin-bottom: 20px; /* Add space between title and content */
+  animation: neonGlow 2s infinite alternate;
+
+}
+@keyframes neonGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(255, 105, 180, 0.8), 0 0 20px rgba(255, 105, 180, 0.6);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(255, 105, 180, 1), 0 0 30px rgba(255, 105, 180, 0.8);
+  }
+}
+
+.cv-section .content {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: #fafafa;
+  line-height: 1.6; /* Improve readability */
+  margin-bottom: 10px;
+}
+
+.neon-button {
+  font-family: 'Orbitron', sans-serif;
+  padding: 12px 24px;
+  font-size: 18px;
+  color: #fafafa;
+  background-color: #333;
+  border: 2px solid rgba(255, 105, 180, 0.5);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 105, 180, 0.7), 0 0 30px rgba(135, 206, 250, 0.5);
+  margin-top: 20px; /* Add space between button and content */
+}
+
+.neon-button:hover {
+  background-color: rgba(255, 105, 180, 0.7);
+  color: #fff;
+}
+.language-selector {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.language-button {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #000000;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.language-button:hover {
+  background-color: #333;
+  color: white;
+}
+
+.language-button.active {
+  background-color: #333;
+  color: white;
+  font-weight: bold;
 }
 
